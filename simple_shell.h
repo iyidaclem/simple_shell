@@ -10,6 +10,9 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
-#include <limits.h>
+#include  <limits.h>
+
+void show_prompt(char **lineptr, size_t *n);
 
 
+#endif
