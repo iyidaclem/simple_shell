@@ -13,6 +13,6 @@
 #include  <limits.h>
 
 void show_prompt(char **lineptr, size_t *n);
-
+void exec_cmd(char *str, char **argv, char **env);
 
 #endif
