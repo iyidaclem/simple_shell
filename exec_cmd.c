@@ -15,7 +15,7 @@ int  exec_cmd(char *str, char **argv, char **env)
 	size_t n;
 	char **exec_args;
 	pid_t new_pid, w;
-	
+
 	n = strlen(str);
 	str1 = malloc(sizeof(char) * n - 1);
 	exec_args = malloc(2 * sizeof(char *));
@@ -29,7 +29,7 @@ int  exec_cmd(char *str, char **argv, char **env)
 
 	new_pid = fork();
 
-	if(new_pid == 0)
+	if (new_pid == 0)
 	{
 		if (execve(exec_args[0], exec_args, env) == -1)
 		{
