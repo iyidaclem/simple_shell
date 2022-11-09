@@ -2,7 +2,6 @@
 
 /**
 *main - Entry point into our shell program
-*mini_shell - helper function for main
 *@argc: argument count
 *@argv: argument to the main function
 *@env:  array of environmental variables
@@ -20,6 +19,12 @@ int main(int argc, char **argv, char **env)
 }
 
 
+/**
+*mini_shell - helper function for main
+*@argv: argument to the main function
+*@env:  array of environmental variables
+*Return: void
+*/
 void mini_shell(char **argv, char **env)
 {
 	char *lineptr;
