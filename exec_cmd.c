@@ -1,4 +1,4 @@
-#include "simple_shell.c"
+#include "simple_shell.h"
 
 /**
 *exec_cmd - function that executes command
@@ -9,26 +9,39 @@
 *Return: void
 */
 
-void exec_cmd(char *str, char **argv, char **env)
+int  exec_cmd(char *str, char **argv, char **env)
 {
 	char *str1;
 	size_t n;
 	char **exec_args;
-
+	pid_t new_pid, w;
+	
 	n = strlen(str);
 	str1 = malloc(sizeof(char) * n - 1);
 	exec_args = malloc(2 * sizeof(char *));
 	if (str1 == NULL || exec_args == NULL)
 	{
-		exit(0);
+		return (0);
 	}
 
 	memcpy(str1, str, n - 1);
 	exec_args[0] = str1;
 
-	if (execve(argv[0], exec_args, env) == -1)
+	new_pid = fork();
+
+	if(new_pid == 0)
 	{
-		perror(argv[0]);
-		exit(0);
+		if (execve(exec_args[0], exec_args, env) == -1)
+		{
+			perror(argv[0]);
+			return (0);
+		}
 	}
+	else
+	{
+		wait(&w);
+		free(exec_args[0]);
+		free(exec_args);
+	}
+	return (0);
 }

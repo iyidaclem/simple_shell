@@ -10,9 +10,9 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
-#include  <limits.h>
+#include <string.h>
 
-void show_prompt(char **lineptr, size_t *n);
-void exec_cmd(char *str, char **argv, char **env);
-
+int show_prompt(char **lineptr, size_t *n);
+int  exec_cmd(char *str, char **argv, char **env);
+void mini_shell(char **argv, char **env);
 #endif

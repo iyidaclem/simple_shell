@@ -1,4 +1,4 @@
-#include "simple_shell.c"
+#include "simple_shell.h"
 
 /**
 *main - Entry point into our shell program
@@ -8,17 +8,23 @@
 *Return: Always success (0);
 */
 
-int main(int argc, char **argv, **env)
+
+int main(int argc, char **argv, char **env)
+{
+	while (argc > 0)
+	{
+		mini_shell(argv, env);
+	}
+	return (0);
+}
+
+void mini_shell(char **argv, char **env)
 {
 	char *lineptr;
 	size_t n;
-
-	while (1)
-	{
-		show_prompt(&lineptr, &n);
-		if (n == -1)
-			continue;
-		exec_cmd(lineptr, argv, env);
-	}
-	return (0);
+	
+	show_prompt(&lineptr, &n);
+	if (n < 1)
+		exit(0);
+	exec_cmd(lineptr, argv, env);
 }
