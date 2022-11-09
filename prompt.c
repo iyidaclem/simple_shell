@@ -17,7 +17,7 @@ int show_prompt(char **lineptr, size_t *n)
 
 	num_chars = getline(lineptr, n, stdin);
 	/* If number of stream is less than 0 */
-	if((int)num_chars == -1)
+	if ((int)num_chars == -1)
 		exit(0);
 
 	return ((int)num_chars);
