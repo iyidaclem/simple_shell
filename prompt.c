@@ -9,9 +9,7 @@
 
 int show_prompt(char **lineptr, size_t *n)
 {
-	/*char *line;
-	size_t nn;*/
-
+	*lineptr = (char *)malloc((unsigned long)n * sizeof(char));
 	write(1, "$ ", 2);
 	getline(lineptr, n, stdin);
 	return (0);

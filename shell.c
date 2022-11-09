@@ -21,8 +21,8 @@ int main(int argc, char **argv, char **env)
 void mini_shell(char **argv, char **env)
 {
 	char *lineptr;
-	size_t n;
-	
+	size_t n = 32;
+
 	show_prompt(&lineptr, &n);
 	if (n < 1)
 		exit(0);
