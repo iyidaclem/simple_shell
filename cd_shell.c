@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * cd_shell - changes current directory
+ * cd_shell - changes current directory to a different directory passed as sh argument
  *
  * @datash: data relevant
  * Return: 1 on success

@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * strcat_cd - function that concatenates the message for cd error
+ * strcat_cd - function that builds cd error by concatenation
  *
  * @datash: data relevant (directory)
  * @msg: message to print
