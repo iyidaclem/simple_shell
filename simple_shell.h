@@ -12,7 +12,7 @@
 #include <signal.h>
 #include <stddef.h>
 #include <string.h>
-
+#include <limits.h>
 
 int show_prompt(char **lineptr, size_t *n);
 int  exec_cmd(char *str, size_t n,  char **argv, char **env);
