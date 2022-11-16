@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * cd_dot - changes to the parent directory
+ * cd_dot - changes to the parent directory taking period (.) as argument
  *
  * @datash: data relevant (environ)
  *
