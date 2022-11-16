@@ -1,47 +1,50 @@
 #include "simple_shell.h"
-
 /**
 *exec_cmd - function that executes command
 *entered by the user from terminal
 *@str: command from the user
 *@argv: arguments to the main function
 *@env: environment from main function
+*@n: number of characters read
 *Return: void
 */
-
-int  exec_cmd(char *str, char **argv, char **env)
+int  exec_cmd(char *str, size_t n, char **argv, char **env)
 {
-	char *str1;
-	size_t n;
-	char **exec_args;
-	pid_t new_pid, w;
+	char **exec_args, *basepath, *str1, *str2;
+	pid_t new_pid;
+	int  i = 1;
 
-	n = strlen(str);
 	str1 = malloc(sizeof(char) * n - 1);
-	exec_args = malloc(2 * sizeof(char *));
+	exec_args = malloc(1 * sizeof(char *));
 	if (str1 == NULL || exec_args == NULL)
 	{
+		free(str1), free(exec_args), perror(argv[0]);
 		return (0);
 	}
-
-	memcpy(str1, str, n - 1);
-	exec_args[0] = str1;
-
+	_memcpy(str1, str, _strlen(str) - 1);
+	str2 = _strtok(str1, " ");
+	if (str2 == NULL)
+		return (0);
+	if (check_path(&basepath, str2) == 0)
+		exec_args[0] = basepath;
+	else
+	{
+		free(basepath), free(str1), free(exec_args), perror(argv[0]);
+		return (0);
+	}
+	while ((str2 = _strtok(NULL, " ")) != NULL)
+		exec_args[i++] = str2;
 	new_pid = fork();
-
 	if (new_pid == 0)
 	{
 		if (execve(exec_args[0], exec_args, env) == -1)
-		{
 			perror(argv[0]);
-			return (0);
-		}
 	}
 	else
-	{
-		wait(&w);
-		free(exec_args[0]);
-		free(exec_args);
-	}
+		wait(NULL);
+	free(exec_args);
+	while (i >= 1)
+		free(exec_args[--i]);
+	free(str1), free(basepath);
 	return (0);
 }

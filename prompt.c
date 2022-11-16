@@ -1,4 +1,5 @@
 #include "simple_shell.h"
+
 /**
 *show_prompt - a function that displays prompt($)
 * and wait for user input
@@ -11,14 +12,13 @@ int show_prompt(char **lineptr, size_t *n)
 {
 	size_t num_chars;
 
-	*lineptr = (char *)malloc((unsigned long)n * sizeof(char));
-	write(1, "Ctrl C for exit\n", 16);
 	write(1, "$ ", 2);
-
-	num_chars = getline(lineptr, n, stdin);
+	num_chars = get_line(lineptr, n, stdin);
 	/* If number of stream is less than 0 */
 	if ((int)num_chars == -1)
+	{
+		free(*lineptr);
 		exit(0);
-
+	}
 	return ((int)num_chars);
 }
