@@ -1,7 +1,7 @@
 #include "simple_shell.h"
 
 /**
- * aux_help - Help information for the builtin help.
+ * aux_help - Help information for the builtin help. Displays usage and other help information about the simple shell
  * Return: no return
  */
 void aux_help(void)
