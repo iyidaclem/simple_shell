@@ -73,7 +73,7 @@ char *_which(char *cmd, char **_environ)
 }
 
 /**
- * is_executable - determines if is an executable
+ * is_executable - determines if a file is an executable
  *
  * @datash: data structure
  * Return: 0 if is not an executable, other number if it does
