@@ -1,6 +1,6 @@
 #include "simple_shell.h"
 /**
-*exec_cmd - function that executes command
+*exec_cmd - function that executes command passed to the simple shell
 *entered by the user from terminal
 *@str: command from the user
 *@argv: arguments to the main function
